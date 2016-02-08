@@ -10,25 +10,31 @@ public class SequenceGenerator {
     print A - Z and only print odd numbers 1-26
     */
 
+    private String printSequence(int begin, int end, boolean isNumber, boolean justOdd) {
 
-    public String printNumbers(int begin, int end) {
         String stringOfNumbers = "";
+        String theStringOfLetters = "";
+        char theChar =0;
         for(int i = begin; i < end; i++  ) {
-            stringOfNumbers = stringOfNumbers + " "+ i;
+            if(isNumber) {
+                stringOfNumbers = stringOfNumbers + " " + i;
+            }else{
+                theChar = (char)i;
+                theStringOfLetters = theStringOfLetters+ " "+ theChar;
+            }
         }
 
-        return stringOfNumbers;
     }
 
-    public String printAlphabet(char beginChar, char endChar) {
-        char theChar = 0;
-        String theStringOfLetters = "";
-        for(int i = beginChar; i < endChar; i++) {
-            theChar = (char)i;
-            theStringOfLetters = theStringOfLetters+ " "+ theChar;
-        }
 
-        return theStringOfLetters;
+    public String printNumbers(int begin, int end) {
+
+        return printSequence(begin, end, true);
+    }
+
+    public String printAlphabet(int beginChar, int endChar, boolean isNumber , boolean justOdd) {
+
+        return printSequence(beginChar, endChar, true, true);
     }
 
     public String printOddNumbers(int begin, int end ) {
