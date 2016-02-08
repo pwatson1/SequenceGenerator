@@ -2,52 +2,58 @@
  * Created by pwatson on 2/8/16.
  */
 public class SequenceGenerator {
-    //public means send to object
-    //private mean send to itself
+    /*Public methods are sent to object, private sent to itself.
+    Identify what methods are common.*/
 
-    /*
-    Write a method that counts from 1-26.
-    print A - Z and only print odd numbers 1-26
-    */
 
-    private String printSequence(int begin, int end, boolean isNumber, boolean justOdd) {
+    private String printSequence(int beginning, int end, boolean printNumber, boolean printOnlyOdd) {
+        /*Created a private string method...It's private because...It's a String because...*/
+        /*If boolean is true = numbers, if false = letters*/
+        String sequenceString = "";//Initializes a string with no content
+        boolean shouldPrint = true;//Initializes a boolean and sets it to true
+        char theChars = 0;
+        for (int i = beginning; i <= end; i++) {//First iteration
+            if(printOnlyOdd && (i %2 ==1)){//If both are true...it's a number and is odd
+                shouldPrint = true;//Should print...
 
-        String stringOfNumbers = "";
-        String theStringOfLetters = "";
-        char theChar =0;
-        for(int i = begin; i < end; i++  ) {
-            if(isNumber) {
-                stringOfNumbers = stringOfNumbers + " " + i;
-            }else{
-                theChar = (char)i;
-                theStringOfLetters = theStringOfLetters+ " "+ theChar;
+            }else if (!printOnlyOdd){//If it's odd...
+                shouldPrint = true;//
+            }else{//
+                shouldPrint = false;//Don't print...
+            }
+            if (printNumber) {
+                if(shouldPrint){
+                    sequenceString = sequenceString + i + " ";
+                }
+
+            } else {//Will print char
+                if(shouldPrint) {
+                    theChars = (char) i;
+                    sequenceString = sequenceString + theChars + " ";
+                }
             }
         }
 
+        return sequenceString;
     }
 
-
-    public String printNumbers(int begin, int end) {
-
-        return printSequence(begin, end, true);
+    public String printNumbers(int beginning, int end) {
+        return printSequence(beginning, end, true, false);
     }
 
-    public String printAlphabet(int beginChar, int endChar, boolean isNumber , boolean justOdd) {
-
-        return printSequence(beginChar, endChar, true, true);
+    public String printAlphabet(int beginning, int end) {
+        return printSequence(beginning, end, false, false);
     }
 
-    public String printOddNumbers(int begin, int end ) {
-        int theNumbers = 0;
-        String  theOddNumbers = "";
-        for (int i = begin; i < end; i++) {
-            theNumbers = i;
+    public String printOddNumbers(int beginning, int end) {
 
-        if (theNumbers % 2 == 1) {
-            theOddNumbers = theOddNumbers + " " + theNumbers;
-        }
-    }
-
-        return theOddNumbers;
+        return printSequence(beginning, end, true,true);
     }
 }
+
+
+
+
+
+
+
